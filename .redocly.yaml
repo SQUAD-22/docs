@@ -11,10 +11,8 @@ referenceDocs:
   theme:
     colors:
       primary:
-        main: "#32329f"
+        main: '#36357E'
   generateCodeSamples:
-    languages:  # Array of language config objects; indicates in which languages to generate code samples.
-      - lang: curl # Can be one of the following supported languages: "curl", "Node.js", "JavaScript".
-      - lang: "Node.js"
-      - lang: "JavaScript"
-      
+    languages: # Array of language config objects; indicates in which languages to generate code samples.
+      - lang: 'Node.js'
+      - lang: 'JavaScript'

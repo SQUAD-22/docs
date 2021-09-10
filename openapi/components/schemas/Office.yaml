@@ -1,0 +1,17 @@
+description: Modelo de escritório no banco de dados.
+type: object
+properties:
+  __v:
+    type: number
+  _id:
+    type: string
+  name:
+    type: string
+  state:
+    type: string
+  city:
+    type: string
+  occupationLimitPercent:
+    type: number
+  deskCount:
+    type: number

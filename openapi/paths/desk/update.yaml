@@ -1,0 +1,47 @@
+post:
+  tags:
+    - Desk
+  operationId: updateDesk
+  summary: Atualizar disponibilidade de uma estação de trabalho
+  description: Para todos os deskIds enviados, a disponibilidade da estação será invertida. Se disponível, fica indisponível e vice-versa.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - office
+            - deskIds
+          properties:
+            office:
+              type: string
+            deskIds:
+              type: array
+              items:
+                type: integer
+        example:
+          office: 613a0ab5993e24e56e6758a4
+          deskIds: [1, 2, 3, 4, 5]
+  responses:
+    200:
+      description: Disponibilidade das estações atualizada
+      content:
+        application/json:
+          schema:
+            properties:
+              updatedDesks:
+                type: array
+                items:
+                  type: integer
+          example:
+            updatedDesks: [1, 2, 3, 4, 5]
+    400:
+      description: Campos não informados ou inválidos
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 400
+            errorId: DESK/INVALID_FIELD
+            message: Algum ou alguns dos parâmetros obrigatórios não foram enviados corretamente.

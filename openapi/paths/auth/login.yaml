@@ -1,0 +1,65 @@
+post:
+  tags:
+    - Auth
+  operationId: login
+  summary: Receber token de identificação
+  description: |
+    Através de e-mail e senha, recebe um token de identificação do consultor
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - email
+            - password
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+        example:
+          email: consultor@fcamara.com.br
+          password: Senhateste123!
+  responses:
+    '200':
+      description: Credenciais corretas
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+          example:
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+    '400':
+      description: Campos não informados ou inválidos
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 400
+            errorId: AUTH/MISSING_FIELDS
+            message: Algum ou alguns dos parâmetros obrigatórios não foram enviados corretamente.
+    '401':
+      description: E-mail ainda não foi verificado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 409
+            errorId: AUTH/EMAIL_NOT_VERIFIED
+            message: O e-mail deste usuário ainda não foi verificado.
+    409:
+      description: Campos não conferem com os dados cadastrados
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 409
+            errorId: AUTH/WRONG_PASSWORD
+            message: A senha informada não coincide com o cadastro.

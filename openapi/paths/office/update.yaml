@@ -1,0 +1,57 @@
+post:
+  tags:
+    - Office
+  summary: Atualizar escritório
+  operationId: updateOffice
+  description: |
+    Atualiza o escritório com os dados informados, deletando ou inserindo estações de trabalho automaticamente.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - office
+          properties:
+            office:
+              type: string
+            name:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            deskCount:
+              type: number
+            occupationLimitPercent:
+              type: number
+        example:
+          office: 613a0ab5993e24e56e6758a4
+          name: Filial Curitiba
+          city: Curitiba
+          state: Paraná
+  responses:
+    '200':
+      description: Escritório atualizado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Office.yaml'
+          example:
+            __v: 0
+            _id: 613a0ab5993e24e56e6758a4
+            name: Filial Curitiba
+            state: Paraná
+            city: Curitiba
+            occupationLimitPercent: 40
+            deskCount: 100
+    '400':
+      description: Campos não informados ou inválidos
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 400
+            errorId: OFFICE/INVALID_FIELD
+            message: Dados inválidos foram enviados em algum dos campos.

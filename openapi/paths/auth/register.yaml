@@ -1,0 +1,52 @@
+post:
+  tags:
+    - Auth
+  summary: Registro de consultor
+  operationId: register
+  description: |
+    Salva o consultor no banco de dados e envia um e-mail de confirmação.
+  requestBody:
+    description: Deve ser informado um e-mail de domínio @fcamara.com.br
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - email
+          properties:
+            email:
+              type: string
+        example:
+          email: consultor@fcamara.com.br
+  responses:
+    '200':
+      description: E-mail de confirmação enviado
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              emailSent:
+                type: string
+          example:
+            emailSent: true
+    '400':
+      description: E-mail não informado ou inválido
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 400
+            errorId: AUTH/INVALID_EMAIL
+            message: O e-mail fornecido é inválido.
+    '409':
+      description: E-mail informado já está cadastrado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 409
+            errorId: AUTH/EMAIL_ALREADY_EXISTS
+            message: O e-mail informado já está cadastrado.

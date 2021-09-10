@@ -1,0 +1,60 @@
+post:
+  tags:
+    - Office
+  summary: Cria um escritório
+  operationId: createOffice
+  description: |
+    Cria um novo escritório com os dados informados, e cria estações de trabalho automaticamente.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - name
+            - city
+            - state
+            - deskCount
+            - occupationLimitPercent
+          properties:
+            name:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            deskCount:
+              type: number
+            occupationLimitPercent:
+              type: number
+        example:
+          name: Filial SP
+          city: São Paulo
+          state: São Paulo
+          deskCount: 100
+          occupationLimitPercent: 40
+  responses:
+    '201':
+      description: Escritório criado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Office.yaml'
+          example:
+            __v: 0
+            _id: 613a0ab5993e24e56e6758a4
+            name: Filial SP
+            state: SP
+            city: SP
+            occupationLimitPercent: 40
+            deskCount: 100
+    '400':
+      description: Campos não informados ou inválidos
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 400
+            errorId: OFFICE/MISSING_FIELDS
+            message: Algum ou alguns dos parâmetros obrigatórios não foram enviados corretamente.

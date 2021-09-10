@@ -1,0 +1,60 @@
+post:
+  tags:
+    - Auth
+  summary: Verificação de e-mail
+  operationId: verifyemail
+  description: |
+    Verifica o e-mail do consultor e salva algumas informações adicionais.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - token
+            - name
+            - password
+          properties:
+            token:
+              type: string
+            name:
+              type: string
+            password:
+              type: string
+        example:
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+          name: Marcos Vinicius Gomes da Silva
+          password: Senhateste123!
+  responses:
+    '200':
+      description: Usuário confirmado com sucesso.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+          example:
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+    '400':
+      description: Campos não informados ou inválidos
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 400
+            errorId: AUTH/INVALID_TOKEN
+            message: O token informado não é válido.
+    '409':
+      description: E-mail já verificado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+          example:
+            status: 409
+            errorId: AUTH/ALREDY_VERIFIED
+            message: Este e-mail já está confirmado.

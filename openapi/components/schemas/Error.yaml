@@ -1,0 +1,9 @@
+description: Esquema padrão para erros.
+type: object
+properties:
+  status:
+    type: number
+  errorId:
+    type: string
+  message:
+    type: string
