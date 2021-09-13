@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Desk
+  operationId: listDesks
+  summary: Lista estações de trabalho
+  description: Lista estações de trabalho e sua disponibilidade.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - office
+            - date
+          properties:
+            office:
+              type: string
+            date:
+              type: string
+        example:
+          office: 613a0ab5993e24e56e6758a4
+          date: '2021-09-13'
+  responses:
+    200:
+      description: Lista de estações de trabalho

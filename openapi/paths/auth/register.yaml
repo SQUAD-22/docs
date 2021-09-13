@@ -27,7 +27,7 @@ post:
             type: object
             properties:
               emailSent:
-                type: string
+                type: boolean
           example:
             emailSent: true
     '400':

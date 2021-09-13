@@ -1,0 +1,10 @@
+get:
+  tags:
+    - Office
+  summary: Lista todos os escritórios
+  operationId: listOffices
+  description: |
+    Lista todos os escritórios cadastrados.
+  responses:
+    '200':
+      description: Lista de escritórios

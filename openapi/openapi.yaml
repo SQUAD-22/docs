@@ -17,7 +17,7 @@ tags:
   - name: Appointment
     description: Gerenciamento de agendamentos.
 servers:
-  - url: 'https://example.com/api/v1'
+  - url: 'https://fcagenda.herokuapp.com'
 paths:
   /auth/register:
     $ref: paths/auth/register.yaml
@@ -31,6 +31,12 @@ paths:
     $ref: paths/office/update.yaml
   /desk/update:
     $ref: paths/desk/update.yaml
+  /office/list:
+    $ref: paths/office/list.yaml
+  /appointment/create:
+    $ref: paths/appointment/create.yaml
+  /desk/listdesks:
+    $ref: paths/desk/listdesks.yaml
 components:
   securitySchemes:
     Bearer Token:

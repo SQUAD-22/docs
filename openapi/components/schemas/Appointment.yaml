@@ -1,0 +1,17 @@
+description: Modelo de agendamento no banco de dados.
+type: object
+properties:
+  __v:
+    type: number
+  _id:
+    type: string
+  desk:
+    type: number
+  userId:
+    type: string
+  at:
+    type: string
+  cancelled:
+    type: boolean
+  office:
+    type: string

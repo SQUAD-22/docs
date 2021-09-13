@@ -1,0 +1,41 @@
+post:
+  tags:
+    - Appointment
+  summary: Criar agendamento
+  operationId: createAppointment
+  description: Cria um novo agendamento na data especificada.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - office
+            - date
+            - desk
+          properties:
+            office:
+              type: string
+            date:
+              type: string
+            desk:
+              type: number
+        example:
+          office: 613b9dae4178515ecdca7bee
+          date: '2021-09-13'
+          desk: 3
+  responses:
+    '201':
+      description: Agendamento confirmado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Appointment.yaml'
+          example:
+            userId: 613b9cc74178515ecdca7be8
+            office: 613b9dae4178515ecdca7bee
+            desk: 1
+            at: '2021-09-14'
+            cancelled: false
+            _id: 613f2e6bf3d457b7005aabb0
+            __v: 0
