@@ -1,0 +1,16 @@
+get:
+  tags:
+    - Appointment
+  operationId: list
+  security:
+    - bearerAuth: []
+  summary: Listar todos os escritórios
+  responses:
+    '200':
+      description: Lista de escritórios
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/Office.yaml'

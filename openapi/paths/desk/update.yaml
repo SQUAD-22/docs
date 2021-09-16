@@ -1,9 +1,11 @@
-post:
+put:
   tags:
     - Desk
   operationId: updateDesk
   summary: Atualizar disponibilidade de uma estação de trabalho
   description: Para todos os deskIds enviados, a disponibilidade da estação será invertida. Se disponível, fica indisponível e vice-versa.
+  security:
+    - bearerAuth: []
   requestBody:
     required: true
     content:

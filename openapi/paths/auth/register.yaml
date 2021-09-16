@@ -38,8 +38,9 @@ post:
             $ref: '../../components/schemas/Error.yaml'
           example:
             status: 400
-            errorId: AUTH/INVALID_EMAIL
+            errorId: GENERIC/INVALID_FIELD
             message: O e-mail fornecido é inválido.
+            field: email
     '409':
       description: E-mail informado já está cadastrado
       content:
@@ -48,5 +49,6 @@ post:
             $ref: '../../components/schemas/Error.yaml'
           example:
             status: 409
-            errorId: AUTH/EMAIL_ALREADY_EXISTS
+            errorId: AUTH/ACCOUNT_ALREADY_EXISTS
             message: O e-mail informado já está cadastrado.
+            field: email

@@ -3,6 +3,8 @@ post:
     - Appointment
   summary: Criar agendamento
   operationId: createAppointment
+  security:
+    - bearerAuth: []
   description: Cria um novo agendamento na data especificada.
   requestBody:
     required: true

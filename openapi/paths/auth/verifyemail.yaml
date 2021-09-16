@@ -37,7 +37,6 @@ post:
                 type: string
           example:
             token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-
     '400':
       description: Campos não informados ou inválidos
       content:
@@ -46,15 +45,6 @@ post:
             $ref: '../../components/schemas/Error.yaml'
           example:
             status: 400
-            errorId: AUTH/INVALID_TOKEN
+            errorId: GENERIC/INVALID_FIELD
             message: O token informado não é válido.
-    '409':
-      description: E-mail já verificado
-      content:
-        application/json:
-          schema:
-            $ref: '../../components/schemas/Error.yaml'
-          example:
-            status: 409
-            errorId: AUTH/ALREDY_VERIFIED
-            message: Este e-mail já está confirmado.
+	          field: token

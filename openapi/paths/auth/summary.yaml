@@ -1,0 +1,24 @@
+get:
+  tags:
+    - Auth
+  operationId: summary
+  security:
+    - bearerAuth: []
+  summary: Receber resumo básico da conta
+  description: |
+    Retorna nome e contagem de agendamentos futuros
+  responses:
+    '200':
+      description: Resumo da conta
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              fullName:
+                type: string
+              appointmentCount:
+                type: number
+          example:
+            fullName: Marcos Vinicius Gomes da Silva
+            appointmentCount: 3

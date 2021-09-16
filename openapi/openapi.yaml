@@ -37,9 +37,17 @@ paths:
     $ref: paths/appointment/create.yaml
   /desk/listdesks:
     $ref: paths/desk/listdesks.yaml
+  /auth/summary:
+    $ref: paths/auth/summary.yaml
+  /appointment/cancel:
+    $ref: paths/appointment/cancel.yaml
+  /appointment/detail:
+    $ref: paths/appointment/detail.yaml
+  /appointment/list:
+    $ref: paths/appointment/list.yaml
 components:
   securitySchemes:
-    Bearer Token:
+    bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT

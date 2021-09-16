@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Appointment
+  operationId: detail
+  security:
+    - bearerAuth: []
+  summary: Detalhar um agendamento
+  description: |
+    Receber todos os dados de um agendamento
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - appointment
+          properties:
+            appointment:
+              type: string
+          example:
+            appointment: 6141d42c50af5d1287e206d4
+  responses:
+    '200':
+      description: Agendamento detalhado
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Appointment.yaml'

@@ -4,6 +4,8 @@ post:
   operationId: listDesks
   summary: Lista estações de trabalho
   description: Lista estações de trabalho e sua disponibilidade.
+  security:
+    - bearerAuth: []
   requestBody:
     required: true
     content:

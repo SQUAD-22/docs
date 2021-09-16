@@ -1,0 +1,31 @@
+delete:
+  tags:
+    - Appointment
+  operationId: cancel
+  security:
+    - bearerAuth: []
+  summary: Cancelar um agendamento
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          required:
+            - appointment
+          properties:
+            appointment:
+              type: string
+          example:
+            appointment: 6141d42c50af5d1287e206d4
+  responses:
+    '200':
+      description: Agendamento cancelado com sucesso.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorId:
+                type: boolean
+          example:
+            errorId: false

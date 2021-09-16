@@ -41,7 +41,7 @@ post:
             $ref: '../../components/schemas/Error.yaml'
           example:
             status: 400
-            errorId: AUTH/MISSING_FIELDS
+            errorId: GENERIC/MISSING_FIELD
             message: Algum ou alguns dos parâmetros obrigatórios não foram enviados corretamente.
     '401':
       description: E-mail ainda não foi verificado
